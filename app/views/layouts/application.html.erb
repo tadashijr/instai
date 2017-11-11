@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instai</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+
+        <nav class='navbar navbar-inverse bg-primary'>
+            <%= link_to 'Instai', root_path, class: 'navbar-brand' %>
+
+            <ul class='nav navbar-nav'>
+              <% if current_user %>
+                <li class='nav-item'>
+                  <%= link_to 'Novo post', new_post_path, class: 'nav-link' %>
+                </li>
+
+              <li class='nav-item float-xs-right'>
+                  <span class="navbar-text"><%= current_user.email %><span>
+              </li>
+                  
+              <li class='nav-item float-xs-right'>
+                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+              <% end %>
+            </ul> 
+
+          </nav>
+
+                <p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+              <%= yield %>
+
+          </div>
+        </div>
+      </div>
+
+  </body>
+</html>
